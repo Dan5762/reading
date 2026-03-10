@@ -1,4 +1,15 @@
 {
   "version": 1,
-  "annotations": []
+  "annotations": [
+    {
+      "id": "MBOUGzdg",
+      "selectedText": "incomparability of the alternatives",
+      "prefix": "nsurability of values, or the ",
+      "suffix": ". They are hard because the al",
+      "comment": "Testing",
+      "color": "yellow",
+      "createdAt": "2026-03-10T20:17:23.624Z",
+      "updatedAt": "2026-03-10T20:17:31.750Z"
+    }
+  ]
 }
