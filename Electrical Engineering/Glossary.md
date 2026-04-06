@@ -1,116 +1,118 @@
 # Electrical Engineering Glossary — Foundations for Solar and Grid Infrastructure
 
+A unified reference covering the core concepts needed before diving deeper into solar energy production, power systems, and grid infrastructure.
+
+---
+
 ## 1. Circuit Fundamentals
 
-- Voltage
+- **Voltage**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Current
+- **Current**
   The flow of electric charge through a conductor, measured in amperes (A). Conventional current flows from positive to negative potential, while electron flow is in the opposite direction. In AC systems, current alternates direction sinusoidally, and its magnitude and phase relationship to voltage determine how power is transferred. Current is the primary quantity that causes heating in conductors (via I²R losses) and is the basis for most protection system operation.
 
-- Resistance
+- **Resistance**
   The opposition to current flow in a conductor, measured in ohms (Ω). It arises from collisions between charge carriers and the atomic lattice of the material, converting electrical energy into heat. Resistance is a purely real quantity: it dissipates energy and does not store it. In power systems, cable resistance is a key factor in voltage drop calculations and power losses, and increases with temperature, which creates a feedback loop under heavy loading.
 
-- Impedance
+- **Impedance**
   The AC generalisation of resistance, expressed as a complex number Z = R + jX in ohms (Ω). The real part R represents resistance (energy dissipation) and the imaginary part X represents reactance (energy storage and release). The magnitude |Z| gives the ratio of voltage amplitude to current amplitude, while the phase angle gives the time shift between them. Impedance is the central concept in AC circuit analysis and power system modelling: every cable, transformer, generator, and load is characterised by its impedance.
 
-- Reactance (inductive and capacitive)
+- **Reactance (inductive and capacitive)**
   The component of impedance that stores and returns energy rather than dissipating it, measured in ohms (Ω). Inductive reactance (X_L = ωL) arises from magnetic energy storage in coils and increases with frequency, causing current to lag voltage. Capacitive reactance (X_C = 1/ωC) arises from electric field energy storage and decreases with frequency, causing current to lead voltage. In power systems, the balance between inductive and capacitive reactance on a network determines voltage profiles and reactive power flows.
 
-- Admittance
+- **Admittance**
   The reciprocal of impedance, Y = 1/Z = G + jB, measured in siemens (S). It represents how easily current flows through a circuit element at a given voltage. Admittance is used extensively in power system load flow analysis because the admittance matrix (Y-bus) of a network is sparse and computationally efficient to construct. The real part is conductance (G) and the imaginary part is susceptance (B).
 
-- Conductance
+- **Conductance**
   The real part of admittance, measured in siemens (S), representing the component of current that is in phase with voltage. It is the reciprocal of resistance for a purely resistive element. In the admittance formulation of power networks, conductance represents the resistive losses in lines and transformers. It is always positive and corresponds to real power dissipation.
 
-- Susceptance
+- **Susceptance**
   The imaginary part of admittance, measured in siemens (S), representing the component of current that is 90° out of phase with voltage. Positive susceptance corresponds to capacitive behaviour (current leads voltage) and negative susceptance to inductive behaviour (current lags voltage). In power system models, the shunt susceptance of cables and overhead lines represents their capacitance to ground, which becomes significant at higher voltages and longer distances. This is the quantity that causes the Ferranti effect on lightly loaded long lines.
 
-- Ohm's Law (DC and AC forms)
+- **Ohm's Law (DC and AC forms)**
   In DC circuits, Ohm's law states V = IR: the voltage across a resistor equals the product of current and resistance. In AC circuits, this generalises to V = IZ, where V, I, and Z are complex quantities (phasors and impedance). The AC form encodes both the amplitude relationship and the phase relationship between voltage and current in a single equation. This generalisation is the foundation of all AC circuit analysis, from simple RLC circuits to entire power networks.
 
-- Kirchhoff's Current Law (KCL)
+- **Kirchhoff's Current Law (KCL)**
   States that the algebraic sum of all currents entering and leaving any node in a circuit must equal zero. This is a direct consequence of charge conservation: charge cannot accumulate at a node. In power system analysis, KCL is applied at every bus to relate the injected power (from generators and loads) to the power flowing through connected branches. It is one of the two fundamental laws (alongside KVL) from which all circuit analysis methods are derived.
 
-- Kirchhoff's Voltage Law (KVL)
+- **Kirchhoff's Voltage Law (KVL)**
   States that the algebraic sum of all voltages around any closed loop in a circuit must equal zero. This is a consequence of energy conservation: a charge returning to its starting point must have the same potential energy. In power systems, KVL governs the relationship between bus voltages and the voltage drops across line impedances. Together with KCL, it forms the mathematical basis for load flow equations and fault analysis.
 
-- Thevenin's Theorem
+- **Thevenin's Theorem**
   A theorem stating that any linear circuit, as seen from two terminals, can be replaced by a single voltage source (V_Th) in series with a single impedance (Z_Th). V_Th is the open-circuit voltage at the terminals, and Z_Th is the impedance seen from the terminals with all independent sources deactivated. This is enormously useful in power systems: the fault level at a bus is determined by the Thevenin impedance looking into the network from that bus. It simplifies complex networks into a single source-impedance pair for analysis of loading, faults, and voltage regulation.
 
-- Norton's Theorem
+- **Norton's Theorem**
   The dual of Thevenin's theorem: any linear circuit can be replaced by a current source (I_N) in parallel with an impedance (Z_N). I_N is the short-circuit current at the terminals, and Z_N equals the Thevenin impedance. Norton and Thevenin equivalents are interconvertible via I_N = V_Th/Z_Th. The Norton form is often more convenient when working with admittance-based formulations, as used in the Y-bus representation of power networks.
 
-- Superposition Theorem
+- **Superposition Theorem**
   A principle stating that in a linear circuit with multiple sources, the response (voltage or current) at any point is the sum of the responses due to each source acting alone. To apply it, you deactivate all sources except one (replacing voltage sources with short circuits and current sources with open circuits), solve, and repeat for each source. It is valid only for linear circuits and does not apply directly to power calculations (since power is a nonlinear function of voltage and current). In power systems, superposition is used in fault analysis to separate the pre-fault load flow from the fault-induced components.
 
-- Maximum Power Transfer Theorem
+- **Maximum Power Transfer Theorem**
 
-- Complex Power
+- **Complex Power**
   The product of voltage phasor and the conjugate of current phasor, S = VI*, measured in volt-amperes (VA). It encapsulates all power information in a single complex number: S = P + jQ, where P is real power and Q is reactive power. The magnitude |S| is apparent power. Complex power is the most compact way to describe the power state at any point in an AC network and is the quantity conserved across ideal transformers.
 
-- Real Power (Active Power)
+- **Real Power (Active Power)**
   The component of power that performs useful work or is irreversibly dissipated as heat, measured in watts (W). It is the time-averaged product of voltage and the component of current in phase with it: P = VI cos(φ). Real power is what generators must ultimately supply and what consumers pay for. In a power system, real power must be balanced instantaneously between generation and demand; any imbalance causes frequency to deviate from 50 Hz.
 
-- Reactive Power
+- **Reactive Power**
   The component of power that oscillates between source and load without performing net work, measured in volt-amperes reactive (VAr). It arises from energy being alternately stored in and released from magnetic fields (inductive loads) or electric fields (capacitive loads): Q = VI sin(φ). Reactive power is essential for maintaining voltage levels across the network, since voltage at a bus is strongly influenced by the local reactive power balance. Although it does no net work, it increases the current flowing through conductors and therefore increases losses.
 
-- Apparent Power
+- **Apparent Power**
   The product of RMS voltage and RMS current magnitudes, |S| = |V||I|, measured in volt-amperes (VA). It represents the total current-carrying capacity required to deliver a given combination of real and reactive power. Equipment (transformers, cables, generators) is rated in VA or MVA because their thermal limits depend on current magnitude regardless of power factor. Apparent power relates to real and reactive power by |S|² = P² + Q².
 
-- Power Factor
+- **Power Factor**
   The ratio of real power to apparent power, cos(φ) = P/|S|, ranging from 0 to 1. A power factor of 1 means all current is doing useful work; a power factor of 0.5 means the equipment must carry twice the current needed for the actual power delivered. Low power factor increases losses and requires oversized equipment. Industrial consumers are often penalised for low power factor, and power factor correction (typically via capacitor banks) is a routine part of electrical installation design.
 
-- Power Triangle
+- **Power Triangle**
   A right-angled triangle relating real power (P, horizontal), reactive power (Q, vertical), and apparent power (|S|, hypotenuse). The angle between P and |S| is the power factor angle φ. It provides an intuitive geometric representation of how the three power quantities relate, and makes it easy to see the effect of adding capacitive or inductive compensation. The power triangle is a standard tool for sizing equipment and designing power factor correction.
 
-- Phasor
+- **Phasor**
   A complex number representing the magnitude and phase of a sinusoidal quantity at a fixed frequency. A voltage v(t) = V_m cos(ωt + φ) is represented as the phasor V = V_m∠φ (or equivalently V_m e^{jφ}). Phasors eliminate the need to work with time-domain trigonometric functions, reducing AC circuit analysis to complex algebra. They are valid only for sinusoidal steady-state analysis at a single frequency, but this covers the vast majority of power system operating conditions.
 
-- Phasor Diagram
+- **Phasor Diagram**
   A graphical representation showing voltage and current phasors as arrows in the complex plane, with length proportional to magnitude and angle representing phase. It makes the phase relationships between different quantities immediately visible: for example, you can see at a glance whether current leads or lags voltage. Phasor diagrams are used extensively in power system analysis to understand generator operation, transformer behaviour, and the effect of compensation equipment. They are particularly useful for visualising the voltage drop across a line as the vector sum of resistive and reactive components.
 
-- RMS (Root Mean Square)
+- **RMS (Root Mean Square)**
   A method of computing the effective value of a time-varying signal, defined as the square root of the mean of the squared instantaneous values over one period. For a sinusoidal waveform with peak value V_m, the RMS value is V_m/√2. RMS values are used because they give the equivalent DC value that would produce the same heating in a resistor: a 230V RMS supply delivers the same power as a 230V DC supply into a resistive load. All standard voltage and current ratings in power systems are RMS values unless explicitly stated otherwise.
 
-- Peak vs RMS Voltage
+- **Peak vs RMS Voltage**
   Peak voltage is the maximum instantaneous value of a sinusoidal waveform, while RMS voltage is the effective value used for power calculations. They are related by V_peak = √2 × V_RMS, so a 230V RMS mains supply has a peak voltage of approximately 325V. This distinction matters for insulation design (which must withstand peak voltage) and for power electronics (where switching devices see peak values). Confusion between peak and RMS is a common source of errors in circuit design and measurement.
 
-- Series and Parallel Impedance
+- **Series and Parallel Impedance**
   Impedances in series add directly (Z_total = Z_1 + Z_2), just like resistances in DC, but with complex arithmetic. Impedances in parallel combine as 1/Z_total = 1/Z_1 + 1/Z_2, or equivalently Z_total = Z_1Z_2/(Z_1 + Z_2). These rules are the foundation of circuit reduction and network simplification. In power systems, series impedance of lines and transformers causes voltage drop, while parallel paths through the network share current according to their impedance ratios.
 
-- Voltage Divider
+- **Voltage Divider**
   A circuit where two impedances in series share the source voltage in proportion to their individual impedances: V_2 = V_source × Z_2/(Z_1 + Z_2). This is the basis for understanding voltage drop along a feeder: the cable impedance and the load impedance form a voltage divider, and the load voltage is always less than the source voltage. In power distribution, the voltage divider effect of cable impedance is the primary reason that voltage regulation degrades with distance from the substation. The concept extends naturally to AC circuits using complex impedances.
 
-- Current Divider
+- **Current Divider**
   When two impedances are in parallel, the total current divides between them inversely proportional to their impedances: I_1 = I_total × Z_2/(Z_1 + Z_2). More current flows through the lower impedance path. In power systems, current dividers describe how fault current distributes between parallel feeders, how load current splits between parallel transformers, and how harmonic currents divide between the supply and filter paths. The principle is the dual of the voltage divider and equally fundamental to circuit analysis.
 
-- Source Impedance
+- **Source Impedance**
   The internal impedance of a source (generator, grid supply, or Thevenin equivalent), which determines how much the terminal voltage drops under load. A low source impedance means the source is "stiff" and can supply large currents without significant voltage drop. The source impedance of the grid at a particular point determines the fault level at that point, the voltage regulation under varying load, and the harmonic voltage distortion caused by nonlinear loads. For domestic supplies in the UK, the source impedance at the meter is typically 0.2-0.8 Ω.
 
-- Load Impedance
+- **Load Impedance**
   The impedance presented by the equipment consuming power. It determines how much current the load draws at a given voltage, and the power factor at which it operates. Load impedance can be resistive (heaters, incandescent lamps), inductive (motors, transformers), capacitive (power factor correction), or a complex combination. In power system studies, loads are often modelled as constant power, constant current, or constant impedance, depending on which approximation best captures their behaviour.
 
-- Impedance Matching
+- **Impedance Matching**
   The practice of designing the load impedance to equal the complex conjugate of the source impedance in order to maximise power transfer. In power systems, impedance matching is generally not a goal because maximising power transfer also means dissipating half the power in the source impedance, which is unacceptably inefficient. However, the concept is important in communications, measurement, and some power electronics applications. In power delivery, the objective is instead to minimise losses, which means making source impedance as low as possible relative to load impedance.
-
-
 
 ## 2. AC Circuit Theory
 
-- Sinusoidal Steady State
+- **Sinusoidal Steady State**
   The condition in which all voltages and currents in a linear circuit are sinusoidal at the same frequency, with constant amplitudes and fixed phase relationships. This occurs after all transients have died away following any switching event or disturbance. The vast majority of power system analysis assumes sinusoidal steady state, which is what allows the use of phasors and impedance. Deviations from this assumption (harmonics, transients, faults) require more advanced analysis techniques.
 
-- Angular Frequency
+- **Angular Frequency**
   The rate of change of the phase angle of a sinusoidal waveform, ω = 2πf, measured in radians per second. For a 50 Hz power system, ω = 314.16 rad/s. Angular frequency appears in the expressions for inductive reactance (X_L = ωL) and capacitive reactance (X_C = 1/ωC), so it directly determines the impedance of energy storage elements. It is the natural unit for expressing frequency in mathematical analysis because it avoids the constant factor of 2π.
 
-- Phase Angle
+- **Phase Angle**
   The angular displacement of a sinusoidal waveform relative to a reference, measured in degrees or radians. In power systems, the phase angle between voltage and current at a load determines the power factor. The phase angle between voltages at two buses determines the real power flow between them (power flows from the leading bus to the lagging bus). Phase angles are the primary unknown variables in load flow analysis.
 
-- Phase Shift
+- **Phase Shift**
   The difference in phase angle between two sinusoidal waveforms of the same frequency. A phase shift can be introduced by reactive elements (inductors and capacitors), by transformers (depending on vector group), or by deliberate control action. In power electronics, phase shift between switching signals is used to control power flow in dual active bridge converters. The concept is distinct from the absolute phase angle: it is always relative.
 
-- Leading and Lagging Current
+- **Leading and Lagging Current**
   Describes whether current reaches its peak before or after voltage in each cycle. Current is said to lead voltage in capacitive circuits (the capacitor's stored charge drives current ahead of the voltage change) and lag voltage in inductive circuits (the inductor opposes changes in current). In power system convention, generators typically produce lagging current (they export reactive power to inductive loads). The distinction is crucial for understanding reactive power flow and for specifying power factor correction equipment.
 
 - **Resonance (series and parallel)**
@@ -151,7 +153,6 @@
 
 ## 3. Electromagnetism
 
-
 - **Electric field**
   A vector field that describes the force per unit charge experienced by a test charge at any point in space, measured in volts per metre (V/m). It is the gradient of electric potential: E = -∇V. In power engineering, electric field strength determines insulation requirements: the dielectric breakdown of air is approximately 3 MV/m, and insulation design ensures that electric fields remain below this threshold under all operating and fault conditions. High electric field concentrations at sharp edges or contaminated surfaces are a primary cause of insulation failure.
 
@@ -179,16 +180,6 @@
 - **Ampere's law**
   States that the line integral of the magnetic field around a closed path equals the total current enclosed: ∮H·dl = I_enclosed (in the magnetostatic case). It relates current to the magnetic field it produces and is the basis for calculating fields in solenoids, toroids, and transformer cores. In its generalised form (with Maxwell's displacement current term), it is one of the four Maxwell's equations. In power engineering, Ampere's law is used to design magnetic circuits and to calculate the magnetising current required by transformer and machine cores.
 
-
-
-
-
-
-
-
-
-
-
 - **Electromagnetic induction**
   The physical phenomenon by which a changing magnetic field produces an electric field (and hence a voltage), as described by Faraday's law. It is the operating principle of generators (where mechanical rotation changes the flux through stator windings), transformers (where alternating current in one winding changes the flux through another), and induction motors (where the rotating stator field induces currents in the rotor). Electromagnetic induction is the single most important physical mechanism in electrical power engineering, enabling the generation, transformation, and utilisation of AC power.
 
@@ -207,32 +198,44 @@
 - **Proximity effect**
   The redistribution of current within a conductor caused by the magnetic field of nearby conductors carrying AC current. Current tends to crowd toward the side of the conductor nearest to or farthest from the adjacent conductor (depending on current direction), increasing the effective resistance. The proximity effect is typically more significant than the skin effect in closely spaced conductors such as transformer windings and bundled cables. It is frequency-dependent and increases with the number and closeness of neighbouring conductors, making it a critical factor in the design of high-current busbars and compact equipment.
 
-- Permeability
-- Reluctance
+- **Permeability**
+
+- **Reluctance**
+
 - **Magnetic Circuit**
   A vector field produced by moving charges (currents) and magnetic materials, which exerts forces on other moving charges and magnetic materials. In power systems, magnetic fields are the medium through which energy is stored in inductors, coupled between transformer windings, and converted between electrical and mechanical forms in rotating machines. The magnetic field strength H (in A/m) and the magnetic flux density B (in tesla) are related by the permeability of the medium: B = μH. Managing magnetic fields is central to the design of every electromagnetic device in the power system.
 
 - **Magnetic Saturation**
   The nonlinear region of a ferromagnetic core's B-H curve where incremental permeability drops sharply, meaning further increases in magnetising current produce diminishing increases in flux density. In a transformer, saturation occurs when the core flux exceeds the design value, causing the magnetising current to spike dramatically with large harmonic content. Saturation can be caused by overvoltage, by DC offset in the current (e.g., from geomagnetically induced currents), or during transformer energisation (inrush). It is a key constraint in transformer design: the core must be large enough to avoid saturation under the worst-case operating voltage and frequency.
 
-
 ## Rotating Machines
-
 
 ## 4. Semiconductor Physics and Devices
 
-- Band Theory (Valence Band, Conduction Band, Band Gap)
-- Fermi Level
-- Doping (n-type, p-type)
-- Carrier Concentration
-- Drift and Diffusion
-- Recombination (Radiative, Auger, Shockley-Read-Hall)
-- Carrier Lifetime
-- Mobility
-- p-n Junction
-- Depletion Region
-- Built-in Potential
-- Forward Bias / Reverse Bias
+- **Band Theory (Valence Band, Conduction Band, Band Gap)**
+
+- **Fermi Level**
+
+- **Doping (n-type, p-type)**
+
+- **Carrier Concentration**
+
+- **Drift and Diffusion**
+
+- **Recombination (Radiative, Auger, Shockley-Read-Hall)**
+
+- **Carrier Lifetime**
+
+- **Mobility**
+
+- **p-n Junction**
+
+- **Depletion Region**
+
+- **Built-in Potential**
+
+- **Forward Bias / Reverse Bias**
+
 - **Diode I-V Characteristic**
   A semiconductor device that conducts current in one direction (forward-biased) and blocks it in the other (reverse-biased). In power electronics, diodes are used in rectifier circuits to convert AC to DC, in freewheeling paths to provide current continuity for inductive loads, and in voltage clamping circuits. Power diodes are characterised by their forward voltage drop (typically 0.7-1.5V), reverse blocking voltage, current rating, and reverse recovery time. The forward voltage drop multiplied by the current represents the diode's conduction loss.
 
@@ -242,30 +245,36 @@
 - **IGBT (Insulated Gate Bipolar Transistor)**
   The insulated-gate bipolar transistor: a semiconductor switch that combines the easy voltage-controlled turn-on of a MOSFET with the low conduction losses of a bipolar transistor. IGBTs can be turned both on and off by gate voltage, enabling fully controllable switching at frequencies up to tens of kHz. They are the dominant device in modern power electronics for applications from 1 kW to several hundred MW, including inverters for solar and wind, motor drives, battery chargers, and voltage-source HVDC converters. Their switching losses are higher than thyristors but the controllability enables much more sophisticated converter topologies.
 
-- Thyristor / SCR (Silicon Controlled Rectifier)
+- **Thyristor / SCR (Silicon Controlled Rectifier)**
+
 - **Zener Diode**
-  A semiconductor device that conducts current in one direction (forward-biased) and blocks it in the other (reverse-biased). In power electronics, diodes are used in rectifier circuits to convert AC to DC, in freewheeling paths to provide current continuity for inductive loads, and in voltage clamping circuits. Power diodes are characterised by their forward voltage drop (typically 0.7-1.5V), reverse blocking voltage, current rating, and reverse recovery time. The forward voltage drop multiplied by the current represents the diode's conduction loss.
 
 - **Photodiode**
-  A semiconductor device that conducts current in one direction (forward-biased) and blocks it in the other (reverse-biased). In power electronics, diodes are used in rectifier circuits to convert AC to DC, in freewheeling paths to provide current continuity for inductive loads, and in voltage clamping circuits. Power diodes are characterised by their forward voltage drop (typically 0.7-1.5V), reverse blocking voltage, current rating, and reverse recovery time. The forward voltage drop multiplied by the current represents the diode's conduction loss.
 
-- Wide Bandgap Semiconductors (SiC, GaN)
+- **Wide Bandgap Semiconductors (SiC, GaN)**
 
 ## 5. Photovoltaic Theory
 
-- Photovoltaic Effect
-- Spectral Irradiance
-- Air Mass (AM0, AM1.5)
-- Standard Test Conditions (STC)
-- Shockley-Queisser Limit
+- **Photovoltaic Effect**
+
+- **Spectral Irradiance**
+
+- **Air Mass (AM0, AM1.5)**
+
+- **Standard Test Conditions (STC)**
+
+- **Shockley-Queisser Limit**
+
 - **Short-Circuit Current (Isc)**
   The flow of electric charge through a conductor, measured in amperes (A). Conventional current flows from positive to negative potential, while electron flow is in the opposite direction. In AC systems, current alternates direction sinusoidally, and its magnitude and phase relationship to voltage determine how power is transferred. Current is the primary quantity that causes heating in conductors (via I²R losses) and is the basis for most protection system operation.
 
 - **Open-Circuit Voltage (Voc)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Fill Factor
-- Maximum Power Point (MPP)
+- **Fill Factor**
+
+- **Maximum Power Point (MPP)**
+
 - **I-V Curve (Current-Voltage Characteristic)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
@@ -278,103 +287,161 @@
 - **Single-Diode Model**
   A semiconductor device that conducts current in one direction (forward-biased) and blocks it in the other (reverse-biased). In power electronics, diodes are used in rectifier circuits to convert AC to DC, in freewheeling paths to provide current continuity for inductive loads, and in voltage clamping circuits. Power diodes are characterised by their forward voltage drop (typically 0.7-1.5V), reverse blocking voltage, current rating, and reverse recovery time. The forward voltage drop multiplied by the current represents the diode's conduction loss.
 
-- Ideality Factor
+- **Ideality Factor**
+
 - **Dark Current / Saturation Current**
   The flow of electric charge through a conductor, measured in amperes (A). Conventional current flows from positive to negative potential, while electron flow is in the opposite direction. In AC systems, current alternates direction sinusoidally, and its magnitude and phase relationship to voltage determine how power is transferred. Current is the primary quantity that causes heating in conductors (via I²R losses) and is the basis for most protection system operation.
 
-- External Quantum Efficiency (EQE)
-- Spectral Response
-- Temperature Coefficient (of Voc, Isc, Power)
-- Nominal Operating Cell Temperature (NOCT)
-- Cell Efficiency vs Module Efficiency vs System Efficiency
-- Degradation Rate
-- Light-Induced Degradation (LID)
-- Potential-Induced Degradation (PID)
-- Hotspot
+- **External Quantum Efficiency (EQE)**
+
+- **Spectral Response**
+
+- **Temperature Coefficient (of Voc, Isc, Power)**
+
+- **Nominal Operating Cell Temperature (NOCT)**
+
+- **Cell Efficiency vs Module Efficiency vs System Efficiency**
+
+- **Degradation Rate**
+
+- **Light-Induced Degradation (LID)**
+
+- **Potential-Induced Degradation (PID)**
+
+- **Hotspot**
+
 - **Bypass Diode**
   A semiconductor device that conducts current in one direction (forward-biased) and blocks it in the other (reverse-biased). In power electronics, diodes are used in rectifier circuits to convert AC to DC, in freewheeling paths to provide current continuity for inductive loads, and in voltage clamping circuits. Power diodes are characterised by their forward voltage drop (typically 0.7-1.5V), reverse blocking voltage, current rating, and reverse recovery time. The forward voltage drop multiplied by the current represents the diode's conduction loss.
 
-- Cell Mismatch
-- String (Series Connection of Cells)
-- Anti-Reflection Coating
-- Surface Passivation
-- PERC (Passivated Emitter and Rear Cell)
-- TOPCon (Tunnel Oxide Passivated Contact)
-- Heterojunction (HJT)
-- Tandem Cell
-- Perovskite
-- Bifacial Module
-- Albedo (in bifacial context)
-- Bifaciality Factor
-- Thin-Film PV (CdTe, CIGS, a-Si)
+- **Cell Mismatch**
+
+- **String (Series Connection of Cells)**
+
+- **Anti-Reflection Coating**
+
+- **Surface Passivation**
+
+- **PERC (Passivated Emitter and Rear Cell)**
+
+- **TOPCon (Tunnel Oxide Passivated Contact)**
+
+- **Heterojunction (HJT)**
+
+- **Tandem Cell**
+
+- **Perovskite**
+
+- **Bifacial Module**
+
+- **Albedo (in bifacial context)**
+
+- **Bifaciality Factor**
+
+- **Thin-Film PV (CdTe, CIGS, a-Si)**
 
 ## 6. PV System Design
 
-- Irradiance (GHI, DNI, DHI)
-- Insolation
+- **Irradiance (GHI, DNI, DHI)**
+
+- **Insolation**
+
 - **Peak Sun Hours**
   Peak voltage is the maximum instantaneous value of a sinusoidal waveform, while RMS voltage is the effective value used for power calculations. They are related by V_peak = √2 × V_RMS, so a 230V RMS mains supply has a peak voltage of approximately 325V. This distinction matters for insulation design (which must withstand peak voltage) and for power electronics (where switching devices see peak values). Confusion between peak and RMS is a common source of errors in circuit design and measurement.
 
-- Solar Resource Assessment
-- Tilt Angle and Azimuth
-- Tracking Systems (Single-Axis, Dual-Axis)
-- Shading Analysis
-- String Sizing
-- Array Configuration
-- DC/AC Ratio (Inverter Loading Ratio)
-- Performance Ratio
-- Specific Yield (kWh/kWp)
-- Capacity Factor
-- System Losses (Soiling, Clipping, Wiring, Mismatch)
-- Energy Yield Simulation
-- P50 / P90 Energy Estimates
-- Levelised Cost of Energy (LCOE)
-- Balance of System (BOS)
-- Mounting Systems (Ground-Mount, Rooftop, Floating)
-- Combiner Box
-- DC Disconnect / AC Disconnect
-- Rapid Shutdown
+- **Solar Resource Assessment**
+
+- **Tilt Angle and Azimuth**
+
+- **Tracking Systems (Single-Axis, Dual-Axis)**
+
+- **Shading Analysis**
+
+- **String Sizing**
+
+- **Array Configuration**
+
+- **DC/AC Ratio (Inverter Loading Ratio)**
+
+- **Performance Ratio**
+
+- **Specific Yield (kWh/kWp)**
+
+- **Capacity Factor**
+
+- **System Losses (Soiling, Clipping, Wiring, Mismatch)**
+
+- **Energy Yield Simulation**
+
+- **P50 / P90 Energy Estimates**
+
+- **Levelised Cost of Energy (LCOE)**
+
+- **Balance of System (BOS)**
+
+- **Mounting Systems (Ground-Mount, Rooftop, Floating)**
+
+- **Combiner Box**
+
+- **DC Disconnect / AC Disconnect**
+
+- **Rapid Shutdown**
+
 - **Arc Fault Detection**
   The current that flows through the point of a fault (short circuit), determined by the driving voltage and the impedance of the path from the sources to the fault location. It is typically 10-50 times the normal load current and comprises both AC and DC components. The AC component is driven by the system generators and is limited by the combined source impedances. Fault current magnitude determines the required breaking capacity of circuit breakers and the settings of protective relays.
 
-- Ground Fault Protection
-- Module-Level Power Electronics (MLPE)
+- **Ground Fault Protection**
+
+- **Module-Level Power Electronics (MLPE)**
 
 ## 7. Power Electronics
 
-- Rectifier (Half-Wave, Full-Wave, Bridge)
-- Inverter (Single-Phase, Three-Phase)
-- DC-DC Converters (Buck, Boost, Buck-Boost)
+- **Rectifier (Half-Wave, Full-Wave, Bridge)**
+
+- **Inverter (Single-Phase, Three-Phase)**
+
+- **DC-DC Converters (Buck, Boost, Buck-Boost)**
+
 - **Voltage Source Inverter (VSI)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Multilevel Inverter
-- String Inverter
-- Central Inverter
-- Microinverter
-- Pulse Width Modulation (PWM)
-- Duty Cycle
+- **Multilevel Inverter**
+
+- **String Inverter**
+
+- **Central Inverter**
+
+- **Microinverter**
+
+- **Pulse Width Modulation (PWM)**
+
+- **Duty Cycle**
+
 - **Switching Frequency**
   The frequency at which a power electronic switch (IGBT, MOSFET) is turned on and off, typically in the range of 1-100 kHz for power conversion applications. Higher switching frequency allows smaller and lighte
 
-- Gate Driver
-- Conduction Losses and Switching Losses
-- Total Harmonic Distortion (THD)
+- **Gate Driver**
+
+- **Conduction Losses and Switching Losses**
+
+- **Total Harmonic Distortion (THD)**
+
 - **Power Quality**
   The ratio of real power to apparent power, cos(φ) = P/|S|, ranging from 0 to 1. A power factor of 1 means all current is doing useful work; a power factor of 0.5 means the equipment must carry twice the current needed for the actual power delivered. Low power factor increases losses and requires oversized equipment. Industrial consumers are often penalised for low power factor, and power factor correction (typically via capacitor banks) is a routine part of electrical installation design.
 
-- Maximum Power Point Tracking (MPPT)
+- **Maximum Power Point Tracking (MPPT)**
+
   - Perturb and Observe (P&O)
   - Incremental Conductance
 - **Anti-Islanding**
   A condition where a portion of the power system becomes electrically separated from the main grid but continues to be energised by local generation. Islanding can be intentional (microgrid operation, planned maintenance) or unintentional (following a fault or switching event). Unintentional islanding is dangerous because voltage and frequency in the island are no longer controlled by the main grid, the protection system may not operate correctly, and there is a risk of energising equipment that workers believe to be de-energised. Anti-islanding detection and protection is mandatory for all grid-connected distributed generation.
 
-- Grid-Following Inverter
-- Grid-Forming Inverter
-- Virtual Synchronous Machine
+- **Grid-Following Inverter**
+
+- **Grid-Forming Inverter**
+
+- **Virtual Synchronous Machine**
 
 ## 8. Three-Phase Systems
-
 
 - **Three-phase power**
   A system using three AC voltages of equal magnitude, each separated by 120° in phase, carried on three conductors. Three-phase power delivers constant instantaneous power (unlike single-phase, which pulsates at twice the supply frequency), enabling smoother operation of motors and generators. It also transmits more power for a given amount of conductor material than three separate single-phase circuits. Virtually all power generation, transmission, and industrial distribution uses three-phase systems.
@@ -390,7 +457,6 @@
 
 - **Delta connection**
   A configuration where the three phase windings are connected end-to-end in a closed triangle. There is no neutral point, and only the line voltage is available. Delta connection is commonly used for transformer primaries, motor windings, and three-phase loads where a neutral is not needed. It has the useful property of trapping triplen harmonic currents (3rd, 9th, 15th, etc.) within the delta loop, preventing them from flowing into the line conductors and propagating through the network.
-
 
 - **Star-delta transformation**
   A mathematical technique for converting a star (Y) connected impedance network to an equivalent delta (Δ) network, or vice versa. The transformation relationships are Z_delta = (Z_a × Z_b + Z_b × Z_c + Z_c × Z_a)/Z_opposite for star-to-delta, with the inverse for delta-to-star. This is essential for simplifying complex three-phase networks where star and delta elements are mixed. It is also used in motor starting: star-delta starters initially connect the motor in star (reducing the starting current by a factor of 3) and then switch to delta for normal running.
@@ -419,7 +485,7 @@
 - **Per-unit system**
   A method of normalising electrical quantities by dividing them by chosen base values (typically base power in MVA and base voltage in kV), producing dimensionless ratios. Once normalised, the per-unit impedance of a transformer is the same whether viewed from the high-voltage or low-voltage side, eliminating the need to refer impedances across voltage levels. This simplifies calculation enormously in systems with multiple voltage levels and many transformers. Nearly all power system analysis software and published data uses the per-unit system, with typical base values of 100 MVA for system studies.
 
-- Base Values
+- **Base Values**
 
 ## 9. Transformers
 
@@ -435,7 +501,6 @@
 - **Magnetising Current**
   The current drawn by a transformer's primary winding to establish the magnetic flux in the core, even when the secondary is open-circuited (no load). It is typically 1-5% of the rated full-load current and is highly nonlinear due to core saturation, containing significant odd harmonic components (especially the 3rd). Magnetising current represents the no-load losses and the reactive power needed to maintain the core flux. During transformer energisation (inrush), magnetising current can transiently reach 5-10 times the rated current due to core saturation and residual flux.
 
-
 - **Leakage reactance**
   The reactance associated with magnetic flux that links one winding of a transformer but not the other, because it passes through air rather than the core. It is modelled as a series reactance in the transformer equivalent circuit and causes a voltage drop under load that is proportional to the load current and roughly 90° out of phase with it. Leakage reactance is a key design parameter: it limits fault current (higher leakage reactance means lower fault current contribution) but also causes greater voltage regulation under load. Typical values are 4-10% on the transformer's MVA base.
 
@@ -444,7 +509,6 @@
 
 - **Iron losses**
   The power dissipated in the magnetic core of a transformer, comprising hysteresis losses and eddy current losses. They are present whenever the transformer is energised, regardless of loading, and are also called "core losses" or "no-load losses." Iron losses depend on the core material, lamination thickness, operating flux density, and frequency. They represent a constant power drain and are a significant economic consideration in distribution transformers, which may be energised 24/7 at light load for much of their life.
-
 
 - **Tap changer (on-load and off-load)**
   A mechanism that varies the transformer turns ratio by switching between different tapping points on a winding, thereby adjusting the output voltage. Off-load tap changers can only be operated when the transformer is de-energised and are used for seasonal or commissioning adjustments. On-load tap changers can change taps while the transformer is carrying load, using a make-before-break mechanism with transition resistors or reactors to avoid interrupting the current. On-load tap changers are essential for voltage regulation on distribution networks and are the primary means by which DNOs maintain voltage within statutory limits.
@@ -470,10 +534,9 @@
 - **Saturation**
   The nonlinear region of a ferromagnetic core's B-H curve where incremental permeability drops sharply, meaning further increases in magnetising current produce diminishing increases in flux density. In a transformer, saturation occurs when the core flux exceeds the design value, causing the magnetising current to spike dramatically with large harmonic content. Saturation can be caused by overvoltage, by DC offset in the current (e.g., from geomagnetically induced currents), or during transformer energisation (inrush). It is a key constraint in transformer design: the core must be large enough to avoid saturation under the worst-case operating voltage and frequency.
 
-- Instrument Transformer (CT, VT/PT)
+- **Instrument Transformer (CT, VT/PT)**
 
 ## 10. Rotating Machines
-
 
 - **Synchronous generator**
   A machine that converts mechanical energy into electrical energy by rotating a magnetic field (on the rotor) within a set of stationary windings (the stator), producing AC voltage at a frequency locked to the rotor speed. The output frequency is f = (N × p)/120, where N is speed in RPM and p is the number of poles. Synchronous generators are the backbone of conventional power systems: virtually all thermal, hydro, and nuclear plants use them. Their rotating mass provides physical inertia that stabilises grid frequency, and their excitation system can independently control reactive power output.
@@ -511,8 +574,9 @@
 - **Torque-Speed Characteristic**
   The curve showing how a motor's torque varies with speed, which is fundamental to matching the motor to its mechanical load. For an induction motor, torque is low at synchronous speed (zero slip), increases roughly proportionally with slip at low slip values, reaches a peak (pull-out torque), and then decreases at higher slip. The operating point is where the motor's torque-speed curve intersects the load's torque-speed curve. This characteristic determines starting behaviour, running efficiency, and stability of the mechanical drive system.
 
-- Doubly-Fed Induction Generator (DFIG)
-- Permanent Magnet Synchronous Generator (PMSG)
+- **Doubly-Fed Induction Generator (DFIG)**
+
+- **Permanent Magnet Synchronous Generator (PMSG)**
 
 - **Mechanical Inertia**
   The property of a rotating mass that resists changes in rotational speed, quantified by the moment of inertia J (in kg·m²). The kinetic energy stored in a rotating machine is E = ½Jω², which acts as a short-term energy buffer: any imbalance between electrical power output and mechanical power input is initially absorbed by changes in rotational kinetic energy. This stored energy is what provides the grid with inertia, slowing down frequency deviations after disturbances. Large thermal and hydro generators typically have moments of inertia in the range of thousands to tens of thousands of kg·m².
@@ -522,7 +586,6 @@
 
 - **Swing Equation**
   The fundamental equation of motion for a synchronous machine rotor: 2H(d²δ/dt²) = P_m - P_e, where δ is the rotor angle, P_m is mechanical power input, and P_e is electrical power output (all in per-unit). It describes how the rotor accelerates or decelerates in response to any imbalance between mechanical and electrical power. The swing equation is the basis for all transient stability analysis: solving it (usually numerically) after a fault determines whether the generator will regain synchronism or "swing out." The frequency dynamics of the entire power system emerge from the coupled swing equations of all connected generators.
-
 
 ## 11. Power System Analysis
 
@@ -553,7 +616,8 @@
 - **Impedance Matrix (Z-bus)**
   The inverse of the admittance matrix, where element Z_ij represents the voltage at bus i caused by a unit current injection at bus j with all other injections zero. Unlike the Y-bus, the Z-bus is generally a full (dense) matrix, which makes it expensive to compute and store for large systems. However, the Z-bus is extremely useful for fault analysis because the fault current at any bus is simply the pre-fault voltage divided by the relevant diagonal element of the Z-bus. It can be built incrementally (bus by bus) without inverting the Y-bus.
 
-- One-Line Diagram (Single-Line Diagram)
+- **One-Line Diagram (Single-Line Diagram)**
+
 - **Optimal Power Flow (OPF)**
   An extension of the load flow that finds the generator dispatch and control settings (tap positions, reactive power sources) that minimise a specified objective function (usually total generation cost or total losses) while satisfying all network constraints (voltage limits, line ratings, generator limits). It is a nonlinear, non-convex optimisation problem, typically solved using interior point methods or sequential linear programming. Optimal power flow is the mathematical foundation for economic operation of power systems and electricity market clearing.
 
@@ -581,9 +645,7 @@
 - **State Estimation**
   The process of determining the most likely state (voltage magnitudes and angles at all buses) of the power system from a set of redundant, imperfect measurements (power flows, injections, voltage magnitudes from SCADA). It uses statistical techniques (typically weighted least squares) to find the state that best fits all measurements simultaneously, and can detect and identify bad measurements. State estimation runs every few minutes in control centres and provides the real-time network model on which all other operational analyses (contingency analysis, economic dispatch, etc.) are based.
 
-
 ## Power System Stability
-
 
 ## 12. Power System Stability and Control
 
@@ -644,16 +706,18 @@
 - **Cascading Failure**
   A sequence of dependent failures in which the loss of one component causes overloads or voltage problems that trip additional components, leading to a widening chain of failures. The mechanism typically involves a line or generator tripping, redistributing power flows onto the remaining network, causing one or more additional elements to exceed their limits and trip, further concentrating flows and accelerating the cascade. Cascading failures are the cause of large-scale blackouts. They are extremely difficult to predict because they involve the interaction of power flow physics, protection system behaviour, and operator response.
 
-
 ## Fault Analysis
 
 - **Automatic Voltage Regulator (AVR)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Power System Stabiliser (PSS)
-- Equal Area Criterion
-- Critical Clearing Time
-- Microgrid
+- **Power System Stabiliser (PSS)**
+
+- **Equal Area Criterion**
+
+- **Critical Clearing Time**
+
+- **Microgrid**
 
 ## 13. Fault Analysis
 
@@ -672,7 +736,8 @@
 - **Fault Level (MVA / Short Circuit Level)**
   An abnormal low-impedance connection between two points in a circuit that are normally at different voltages, causing very large currents to flow. Short circuits can occur due to insulation failure, physical damage, contamination, or lightning strikes. The resulting fault current can be tens or hundreds of times the normal load current, causing severe mechanical stresses, heating, and potential equipment damage within milliseconds. Rapid detection and clearance of short circuits by the protection system is essential for equipment safety, personnel safety, and system stability.
 
-- X/R Ratio
+- **X/R Ratio**
+
 - **Sub-Transient Reactance**
   The effective reactance of a synchronous generator during the first few cycles (approximately 10-30 ms) after a fault, denoted X"d. It is the lowest of the three generator reactances and produces the highest initial fault current. Sub-transient reactance represents the effect of currents induced in the rotor damper windings and the rotor body, which initially oppose the change in flux. Typical values are 0.1-0.25 pu. It is the reactance used for calculating the maximum (first-cycle) fault current for circuit breaker making capacity specification.
 
@@ -685,12 +750,10 @@
 - **DC Offset (in Fault Current)**
   A decaying DC component that appears in the fault current when a fault occurs at a point in the voltage cycle that does not match the steady-state current phase. Because the current in an inductive circuit cannot change instantaneously, the initial fault current includes a DC component that makes the total current asymmetrical, with one half-cycle peaks much larger than the other. The DC component decays exponentially with a time constant L/R of the faulted circuit (typically 30-100 ms for transmission faults). The DC offset increases the peak current and the asymmetrical RMS current during the first few cycles, which is critical for circuit breaker making capacity and for calculating mechanical forces on busbars and cables.
 
-
 ## Protection
 
 - **Prospective Fault Current**
   The current that would flow at a given point in the network under fault conditions if the protective devices were replaced by conductors of negligible impedance. It represents the maximum possible fault current and is determined solely by the source impedances and the system voltage. Prospective fault current is the quantity used to specify circuit breaker and fuse ratings. It is calculated at the design stage for every point in the network where protective devices are installed.
-
 
 ## 14. Protection
 
@@ -733,8 +796,10 @@
 - **Pickup Current**
   The minimum current at which a protection relay or fuse begins to operate (starts timing or initiates tripping). It must be set above the maximum expected load current (to avoid spurious tripping during normal operation) but below the minimum expected fault current (to ensure operation for all faults in the protected zone). The ratio of minimum fault current to pickup current is called the sensitivity, and must be greater than 1 for the protection to work. Setting the pickup current is one of the most important decisions in protection design, requiring knowledge of both maximum load and minimum fault conditions.
 
-- Zones of Protection (Zone 1, Zone 2, Zone 3)
-- Primary Protection and Backup Protection
+- **Zones of Protection (Zone 1, Zone 2, Zone 3)**
+
+- **Primary Protection and Backup Protection**
+
 - **Auto-Reclosing**
   The automatic re-energisation of a line after it has been tripped by protection, based on the expectation that many faults (particularly on overhead lines) are transient (caused by lightning, wind, or animals) and will have cleared by the time the line is re-energised. The reclosing sequence typically includes one or more attempts with increasing dead times between them. Auto-reclosing significantly improves supply continuity on overhead line networks, where 80-90% of faults are transient. However, it must be inhibited or used with care on cable networks (where faults are usually permanent) and where distributed generation is present (due to islanding risks).
 
@@ -744,58 +809,74 @@
 - **Arc Flash**
   An explosive release of energy caused by an electric arc between conductors or between a conductor and ground, producing intense heat (up to 20,000°C), light, pressure waves, and potentially molten metal. Arc flash energy depends on the fault current magnitude, the clearing time of the protection, and the distance from the arc. It is a major electrical safety hazard for personnel working on live or potentially live equipment. Arc flash risk assessment and mitigation (through faster protection, reduced fault levels, engineering controls, and appropriate personal protective equipment) is a legal requirement in most jurisdictions.
 
-
 ## Power Electronics
 
 - **Fault Ride-Through (FRT) / Low Voltage Ride-Through (LVRT)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-
 ## 15. Transmission and Distribution
 
-- Overhead Line
-- Underground Cable
-- Transmission Line Parameters (R, L, C, G per unit length)
+- **Overhead Line**
+
+- **Underground Cable**
+
+- **Transmission Line Parameters (R, L, C, G per unit length)**
+
 - **Characteristic Impedance (Surge Impedance)**
   The AC generalisation of resistance, expressed as a complex number Z = R + jX in ohms (Ω). The real part R represents resistance (energy dissipation) and the imaginary part X represents reactance (energy storage and release). The magnitude |Z| gives the ratio of voltage amplitude to current amplitude, while the phase angle gives the time shift between them. Impedance is the central concept in AC circuit analysis and power system modelling: every cable, transformer, generator, and load is characterised by its impedance.
 
 - **Surge Impedance Loading (SIL)**
   The AC generalisation of resistance, expressed as a complex number Z = R + jX in ohms (Ω). The real part R represents resistance (energy dissipation) and the imaginary part X represents reactance (energy storage and release). The magnitude |Z| gives the ratio of voltage amplitude to current amplitude, while the phase angle gives the time shift between them. Impedance is the central concept in AC circuit analysis and power system modelling: every cable, transformer, generator, and load is characterised by its impedance.
 
-- Ferranti Effect
-- Corona Discharge
-- Bundled Conductors
-- ACSR (Aluminium Conductor Steel Reinforced)
+- **Ferranti Effect**
+
+- **Corona Discharge**
+
+- **Bundled Conductors**
+
+- **ACSR (Aluminium Conductor Steel Reinforced)**
+
 - **Voltage Levels (LV, MV, HV, EHV)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Substation
-- Switchgear
-- Disconnect Switch (Isolator)
-- Capacitor Bank
-- Shunt Reactor
+- **Substation**
+
+- **Switchgear**
+
+- **Disconnect Switch (Isolator)**
+
+- **Capacitor Bank**
+
+- **Shunt Reactor**
+
 - **Distribution Feeder**
   A transformer that steps down voltage from the medium-voltage distribution network (typically 11 kV in the UK) to low voltage (400/230V) for delivery to end consumers. Distribution transformers are the most numerous transformers in the power system (there are hundreds of thousands in the UK) and are designed for high efficiency at low load, since they are often lightly loaded. They are typically rated from 25 kVA to 1 MVA, use oil or dry-type insulation, and operate with natural cooling. Their impedance (typically 4-5%) determines the fault level on the LV network.
 
-- Radial Network
-- Ring (Loop) Network
+- **Radial Network**
+
+- **Ring (Loop) Network**
+
 - **Voltage Regulator**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
-
 
 ## 16. HVDC and FACTS
 
 - **HVDC (High Voltage Direct Current)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Line-Commutated Converter (LCC)
+- **Line-Commutated Converter (LCC)**
+
 - **Voltage Source Converter (VSC)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Converter Station
-- DC Link
-- Monopole / Bipole Configuration
-- FACTS (Flexible AC Transmission Systems)
+- **Converter Station**
+
+- **DC Link**
+
+- **Monopole / Bipole Configuration**
+
+- **FACTS (Flexible AC Transmission Systems)**
+
   - SVC (Static VAR Compensator)
   - STATCOM (Static Synchronous Compensator)
 - **Reactive Power Compensation**
@@ -804,120 +885,183 @@
 - **Voltage Support**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-
 ## 17. Energy Storage
 
-- Battery Energy Storage System (BESS)
+- **Battery Energy Storage System (BESS)**
+
 - **State of Charge (SoC)**
   The process of determining the most likely state (voltage magnitudes and angles at all buses) of the power system from a set of redundant, imperfect measurements (power flows, injections, voltage magnitudes from SCADA). It uses statistical techniques (typically weighted least squares) to find the state that best fits all measurements simultaneously, and can detect and identify bad measurements. State estimation runs every few minutes in control centres and provides the real-time network model on which all other operational analyses (contingency analysis, economic dispatch, etc.) are based.
-
 
 ## Power System Stability
 
 - **State of Health (SoH)**
   The process of determining the most likely state (voltage magnitudes and angles at all buses) of the power system from a set of redundant, imperfect measurements (power flows, injections, voltage magnitudes from SCADA). It uses statistical techniques (typically weighted least squares) to find the state that best fits all measurements simultaneously, and can detect and identify bad measurements. State estimation runs every few minutes in control centres and provides the real-time network model on which all other operational analyses (contingency analysis, economic dispatch, etc.) are based.
 
-
 ## Power System Stability
 
-- Depth of Discharge (DoD)
-- Cycle Life
-- C-Rate
-- Round-Trip Efficiency
-- Energy Density vs Power Density
-- Lithium-Ion (NMC, LFP, NCA)
-- Flow Battery (Vanadium Redox)
-- Pumped Hydro Storage
-- Flywheel Energy Storage
-- Compressed Air Energy Storage (CAES)
-- Hydrogen (Electrolysis, Fuel Cell, Power-to-Gas)
-- Battery Management System (BMS)
-- Cell Balancing
-- Thermal Runaway
+- **Depth of Discharge (DoD)**
+
+- **Cycle Life**
+
+- **C-Rate**
+
+- **Round-Trip Efficiency**
+
+- **Energy Density vs Power Density**
+
+- **Lithium-Ion (NMC, LFP, NCA)**
+
+- **Flow Battery (Vanadium Redox)**
+
+- **Pumped Hydro Storage**
+
+- **Flywheel Energy Storage**
+
+- **Compressed Air Energy Storage (CAES)**
+
+- **Hydrogen (Electrolysis, Fuel Cell, Power-to-Gas)**
+
+- **Battery Management System (BMS)**
+
+- **Cell Balancing**
+
+- **Thermal Runaway**
 
 ## 18. Grid Integration of Renewables
 
-- Grid Code
-- Point of Common Coupling (PCC)
-- Hosting Capacity
-- Curtailment
-- Capacity Firming
-- Ramp Rate Control
+- **Grid Code**
+
+- **Point of Common Coupling (PCC)**
+
+- **Hosting Capacity**
+
+- **Curtailment**
+
+- **Capacity Firming**
+
+- **Ramp Rate Control**
+
 - **Reactive Power Capability**
   The component of power that oscillates between source and load without performing net work, measured in volt-amperes reactive (VAr). It arises from energy being alternately stored in and released from magnetic fields (inductive loads) or electric fields (capacitive loads): Q = VI sin(φ). Reactive power is essential for maintaining voltage levels across the network, since voltage at a bus is strongly influenced by the local reactive power balance. Although it does no net work, it increases the current flowing through conductors and therefore increases losses.
 
 - **Voltage Regulation (at PCC)**
   The electric potential difference between two points in a circuit, measured in volts (V). It represents the energy per unit charge available to drive current through a conductor. In power systems, voltage levels are used to classify networks: low voltage (below 1 kV), medium voltage (1-33 kV), high voltage (33-275 kV), and extra-high voltage (275 kV+). Maintaining voltage within tight tolerances is one of the fundamental operational requirements of any electrical grid.
 
-- Harmonic Limits
-- Interconnection Standards (IEEE 1547, G98/G99)
-- Network Reinforcement
-- Active Network Management (ANM)
-- Demand-Side Response (DSR)
-- Virtual Power Plant (VPP)
-- Aggregator
-- Distributed Energy Resource (DER)
-- Distributed Generation (DG)
-- Net Metering
-- Feed-in Tariff
-- Power Purchase Agreement (PPA)
-- Renewable Energy Certificate (REC)
-- Capacity Market
-- Ancillary Services
-- Balancing Mechanism
-- Duck Curve
-- Renewable Penetration Level
-- System Non-Synchronous Penetration (SNSP)
+- **Harmonic Limits**
+
+- **Interconnection Standards (IEEE 1547, G98/G99)**
+
+- **Network Reinforcement**
+
+- **Active Network Management (ANM)**
+
+- **Demand-Side Response (DSR)**
+
+- **Virtual Power Plant (VPP)**
+
+- **Aggregator**
+
+- **Distributed Energy Resource (DER)**
+
+- **Distributed Generation (DG)**
+
+- **Net Metering**
+
+- **Feed-in Tariff**
+
+- **Power Purchase Agreement (PPA)**
+
+- **Renewable Energy Certificate (REC)**
+
+- **Capacity Market**
+
+- **Ancillary Services**
+
+- **Balancing Mechanism**
+
+- **Duck Curve**
+
+- **Renewable Penetration Level**
+
+- **System Non-Synchronous Penetration (SNSP)**
 
 ## 19. Smart Grid Basics
 
-- Smart Grid
-- Smart Meter
-- Advanced Metering Infrastructure (AMI)
+- **Smart Grid**
+
+- **Smart Meter**
+
+- **Advanced Metering Infrastructure (AMI)**
+
 - **Phasor Measurement Unit (PMU)**
   A complex number representing the magnitude and phase of a sinusoidal quantity at a fixed frequency. A voltage v(t) = V_m cos(ωt + φ) is represented as the phasor V = V_m∠φ (or equivalently V_m e^{jφ}). Phasors eliminate the need to work with time-domain trigonometric functions, reducing AC circuit analysis to complex algebra. They are valid only for sinusoidal steady-state analysis at a single frequency, but this covers the vast majority of power system operating conditions.
 
-- SCADA (Supervisory Control and Data Acquisition)
-- Energy Management System (EMS)
-- Distribution Management System (DMS)
-- IEC 61850
-- Demand Response
-- Time-of-Use Tariff
-- Vehicle-to-Grid (V2G)
+- **SCADA (Supervisory Control and Data Acquisition)**
+
+- **Energy Management System (EMS)**
+
+- **Distribution Management System (DMS)**
+
+- **IEC 61850**
+
+- **Demand Response**
+
+- **Time-of-Use Tariff**
+
+- **Vehicle-to-Grid (V2G)**
 
 ## 20. Control Systems (Essentials)
 
-- Open-Loop vs Closed-Loop Control
-- Feedback Control
-- PID Controller (Proportional, Integral, Derivative)
-- Phase-Locked Loop (PLL)
-- dq0 Transform (Park Transform)
-- Clarke Transform (alpha-beta)
+- **Open-Loop vs Closed-Loop Control**
+
+- **Feedback Control**
+
+- **PID Controller (Proportional, Integral, Derivative)**
+
+- **Phase-Locked Loop (PLL)**
+
+- **dq0 Transform (Park Transform)**
+
+- **Clarke Transform (alpha-beta)**
 
 ## 21. Reliability and Economics
 
-- Reliability Indices (SAIDI, SAIFI, CAIDI)
-- Loss of Load Expectation (LOLE)
+- **Reliability Indices (SAIDI, SAIFI, CAIDI)**
+
+- **Loss of Load Expectation (LOLE)**
+
 - **N-1 Criterion**
   A security standard requiring that the power system must be able to withstand the loss of any single component (generator, line, or transformer) without violating any operational limits. This means the system must be operated with sufficient margin that no single failure causes cascade overloads, voltage collapse, or loss of supply. The N-1 criterion is the fundamental planning and operating standard for transmission systems worldwide. More stringent criteria (N-2, N-1-1) are sometimes applied for critical infrastructure or extreme events.
 
-- Reserve Margin
-- Effective Load Carrying Capability (ELCC)
-- De-rating Factor
-- Transmission Loss Factor
+- **Reserve Margin**
+
+- **Effective Load Carrying Capability (ELCC)**
+
+- **De-rating Factor**
+
+- **Transmission Loss Factor**
 
 ## 22. Emerging Topics
 
-- Grid-Forming vs Grid-Following Control
-- 100% Inverter-Based Resource Grid
-- Weak Grid / Strong Grid (Short-Circuit Ratio)
-- Agrivoltaics
-- Building-Integrated PV (BIPV)
-- Dynamic Line Rating
-- Hybrid Power Plant (Solar + Wind + Storage)
-- Co-located Storage
-- DC Microgrid
+- **Grid-Forming vs Grid-Following Control**
+
+- **100% Inverter-Based Resource Grid**
+
+- **Weak Grid / Strong Grid (Short-Circuit Ratio)**
+
+- **Agrivoltaics**
+
+- **Building-Integrated PV (BIPV)**
+
+- **Dynamic Line Rating**
+
+- **Hybrid Power Plant (Solar + Wind + Storage)**
+
+- **Co-located Storage**
+
+- **DC Microgrid**
+
 - **GaN and SiC Power Electronics**
   The ratio of real power to apparent power, cos(φ) = P/|S|, ranging from 0 to 1. A power factor of 1 means all current is doing useful work; a power factor of 0.5 means the equipment must carry twice the current needed for the actual power delivered. Low power factor increases losses and requires oversized equipment. Industrial consumers are often penalised for low power factor, and power factor correction (typically via capacitor banks) is a routine part of electrical installation design.
 
-- Sector Coupling (Power-to-Heat, Power-to-Hydrogen)
+- **Sector Coupling (Power-to-Heat, Power-to-Hydrogen)**
